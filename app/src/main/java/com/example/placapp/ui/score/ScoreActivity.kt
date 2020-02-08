@@ -31,6 +31,15 @@ class ScoreActivity : AppCompatActivity() {
         btAwayGoal.setOnClickListener { scoreViewModel.goalAway() }
         btRestart.setOnClickListener { scoreViewModel.restartGame() }
         btEndGame.setOnClickListener { finish() }
+        btChronometer.setOnClickListener {
+            if(myChronometer.isRunning) {
+                btChronometer.text = "Iniciar cronometro"
+                myChronometer.stop()
+            } else {
+                btChronometer.text = "Pausar cronometro"
+                myChronometer.start()
+            }
+        }
     }
 
     private fun initViewModel() {
