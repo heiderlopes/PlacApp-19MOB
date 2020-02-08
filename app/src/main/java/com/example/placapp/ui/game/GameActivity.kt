@@ -16,11 +16,12 @@ import com.example.placapp.ui.game.hometeam.HomeTeamFragment
 import com.example.placapp.ui.score.ScoreActivity
 import kotlinx.android.synthetic.main.activity_game.*
 
-class GameActivity : AppCompatActivity() {
+class GameActivity : AppCompatActivity(), AwayTeamFragment.AwayTeamSelectedListener {
 
-    private var eventName = ""
-    private var homeTeam = ""
-    private var awayTeam = ""
+    override fun onAwayTeam(awayName: String) {
+        gameViewModel.awayTeam = awayName
+        showScoreActivity()
+    }
 
     private lateinit var gameViewModel: GameViewModel
 
@@ -53,8 +54,8 @@ class GameActivity : AppCompatActivity() {
 
     private fun registerBroadcastReceiver() {
         val intentFilter = IntentFilter("FILTER_EVENT")
-        intentFilter.addAction("FILTER_HOME_TEAM")
-        intentFilter.addAction("FILTER_AWAY_TEAM")
+        //intentFilter.addAction("FILTER_HOME_TEAM")
+        //intentFilter.addAction("FILTER_AWAY_TEAM")
         LocalBroadcastManager.getInstance(this).registerReceiver(mMessageReceiver, intentFilter)
     }
 
@@ -89,7 +90,7 @@ class GameActivity : AppCompatActivity() {
     }
 
     private fun showAwayTeamFragment() {
-        nextFragment(AwayTeamFragment())
+        nextFragment(AwayTeamFragment.newInstance(gameViewModel.homeTeam))
     }
 
     private fun nextFragment(fragment: Fragment) {
@@ -101,7 +102,9 @@ class GameActivity : AppCompatActivity() {
             R.anim.exit_to_right
         )
         ft.replace(R.id.containerGame, fragment)
-        ft.addToBackStack(null)
+        //ft.addToBackStack(null)
+        ft.disallowAddToBackStack()
+
         ft.commit()
     }
 
@@ -112,6 +115,11 @@ class GameActivity : AppCompatActivity() {
         nextScreen.putExtra("awayTeam", gameViewModel.awayTeam)
         startActivity(nextScreen)
         finish()
+    }
+
+
+    fun getHomeTeam(): String {
+        return gameViewModel.homeTeam
     }
 
 

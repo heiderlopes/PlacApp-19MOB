@@ -2,6 +2,7 @@ package com.example.placapp.ui.score
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.SystemClock
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.example.placapp.R
@@ -29,16 +30,21 @@ class ScoreActivity : AppCompatActivity() {
     private fun registerListener() {
         btGoalHome.setOnClickListener { scoreViewModel.goalHome() }
         btAwayGoal.setOnClickListener { scoreViewModel.goalAway() }
-        btRestart.setOnClickListener { scoreViewModel.restartGame() }
+        btRestart.setOnClickListener {
+            scoreViewModel.restartGame()
+            chronometer.restart()
+            btCron.text = "Iniciar"
+        }
         btEndGame.setOnClickListener { finish() }
-        btChronometer.setOnClickListener {
-            if(myChronometer.isRunning) {
-                btChronometer.text = "Iniciar cronometro"
-                myChronometer.stop()
+        btCron.setOnClickListener {
+            if(chronometer.isRunning) {
+                btCron.text = "Iniciar"
+                chronometer.stop()
             } else {
-                btChronometer.text = "Pausar cronometro"
-                myChronometer.start()
+                btCron.text = "Parar"
+                chronometer.start()
             }
+
         }
     }
 

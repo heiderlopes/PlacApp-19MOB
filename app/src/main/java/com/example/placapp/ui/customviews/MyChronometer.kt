@@ -33,4 +33,11 @@ class MyChronometer : Chronometer {
         isRunning = false
     }
 
+    fun restart() {
+        /*stop()
+        this.base = this.base + SystemClock.elapsedRealtime()*/
+        this.base = SystemClock.elapsedRealtime()
+        stop()
+    }
+
 }

@@ -36,17 +36,6 @@ class EventFragment : Fragment() {
 
     private fun nextScreen() {
         sendEventName()
-
-        val ft = activity?.supportFragmentManager?.beginTransaction()
-        ft?.setCustomAnimations(
-            R.anim.enter_from_right,
-            R.anim.exit_to_left,
-            R.anim.enter_from_left,
-            R.anim.exit_to_right
-        )
-        ft?.replace(R.id.containerGame, HomeTeamFragment())
-        ft?.addToBackStack(null)
-        ft?.commit()
     }
 
     private fun sendEventName() {

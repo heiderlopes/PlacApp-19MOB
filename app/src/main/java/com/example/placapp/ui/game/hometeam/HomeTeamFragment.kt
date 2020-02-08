@@ -32,7 +32,7 @@ class HomeTeamFragment : Fragment() {
     }
 
     private fun sendHomeTeamName() {
-        val intent = Intent("FILTER_HOME_TEAM")
+        val intent = Intent("FILTER_EVENT")
         intent.putExtra("home_team", inputHomeTeam.text.toString())
         LocalBroadcastManager.getInstance(requireContext()).sendBroadcast(intent)
     }

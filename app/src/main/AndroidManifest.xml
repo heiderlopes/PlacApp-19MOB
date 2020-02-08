@@ -8,8 +8,10 @@
             android:label="@string/app_name"
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
+            android:screenOrientation="portrait"
             android:theme="@style/FullScreen">
-        <activity android:name="com.example.placapp.ui.score.ScoreActivity">
+        <activity android:name="com.example.placapp.ui.score.ScoreActivity"
+                  android:screenOrientation="portrait">
         </activity>
         <activity android:name="com.example.placapp.ui.game.GameActivity">
         </activity>
