@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Placapp</string>
+    <string name="main_title">Placapp</string>
+    <string name="main_subtitle">Transforme seus jogos \nem momentos inesquecíveis.</string>
+    <string name="button_new_game">Novo Jogo</string>
+    <string name="button_exit">Sair</string>
+    <string name="developed_by">Desenvolvido por Heider Lopes</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
